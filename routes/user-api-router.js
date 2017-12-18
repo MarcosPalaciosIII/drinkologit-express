@@ -117,4 +117,50 @@ router.get('/checklogin', (req, res, next) => {
   }
 });
 
+router.put("/drinks/:id/add", (req, res, next) => {
+  req.user.favorites.push( req.params.id );
+  req.user.save()
+  .then(() => {
+    res.status(200).json(req.user);
+  })
+  .catch((err) => {
+    console.log("PUT/drinks/:id/add ERROR!!");
+    console.log(err);
+
+    // 400 status code if validation error
+    if (err.errors) {
+      // respond with an VALIDATION ERROR in the json format
+      res.status(400).json(err.errors);
+    }
+    else {
+      // respond with an ERROR MESSAGE in the json format
+      res.status(500).json({ error: "My Favorites update database error!" });
+    }
+  });
+}); // PUT /drinks/:id/add
+
+router.delete("/drinks/:id/delete", (req, res, next) => {
+  req.user.favorites.pull(req.params.id);
+  req.user.save()
+  .then(() => {
+    res.status(200).json(req.user);
+  })
+  .catch((err) => {
+    console.log("DELETE/drinks/:id/delete ERROR!!");
+    console.log(err);
+
+    // 400 status code if validation error
+    if (err.errors) {
+      // respond with an VALIDATION ERROR in the json format
+      res.status(400).json(err.errors);
+    }
+    else {
+      // respond with an ERROR MESSAGE in the json format
+      res.status(500).json({ error: "My Favorites remove drink database error!" });
+    }
+  });
+});
+
+
+
 module.exports = router;

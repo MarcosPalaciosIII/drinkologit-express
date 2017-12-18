@@ -10,18 +10,20 @@ const drinkSchema = new Schema(
     },
     drinkCreator: { type: String },
     description: { type: String },
-    ingredients: {
+    ingredients: [
+      {
       type: String,
       required: [true, "Please enter ingredients for your drink"]
-    },
+    }
+  ],
     image: {
       type: String,
-      default: "images/defualt-drink.jpg"
+      default: "/assets/default-drink.jpg"
     },
     directions: { type: String },
   },
   {
-    timestamp: true
+    timestamps: true
   }
 );
 

@@ -18,11 +18,14 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: 'images/default-user.png'
-    }
+      default: '/assets/default-user.jpg'
+    },
+    favorites: [
+      { type: Schema.Types.ObjectId }
+    ]
   },
   {
-    timestamp: true
+    timestamps: true
   }
 );
 
