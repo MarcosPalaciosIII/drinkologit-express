@@ -1,3 +1,3 @@
 # Drinkologit
 
-drinkologist.co
+Link to the project: http://www.drinkologist.co
