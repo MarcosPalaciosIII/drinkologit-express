@@ -1,1 +1,3 @@
-# drinkologit-express
+# Drinkologit
+
+drinkologist.co
